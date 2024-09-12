@@ -9,11 +9,16 @@ const count = ref(0)
 </script>
 
 <template>
+    <el-button>我是 ElButton</el-button>
+
   <h1>{{ msg }} {{ app.name }}</h1>
   <!-- 来自 Material Design 图标的橙色闹钟 -->
   <div class="i-mdi-alarm text-orange-400" />
-  <div class="i-material-symbols:alarm-smart-wake w-1em h-1em"></div><div class="i-ic:baseline-shape-line w-1em h-1em" style="color: #793535;"></div>  <div class="i-ph-anchor-simple-thin" />
-   <div class="card w-2xl ">
+  <div class="i-material-symbols:alarm-smart-wake w-1em h-1em"></div>
+  <div class="i-ic:baseline-shape-line w-1em h-1em" style="color: #793535;"></div>
+  <div class="i-cib:postwoman w-56px h-56px" style="color: #28c342;"></div>
+  <div class="i-ph-anchor-simple-thin" />
+  <div class="card w-2xl ">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
       Edit
