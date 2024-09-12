@@ -1,0 +1,11 @@
+@import "./transition.css";
+@import "./reset.css";
+
+html,
+body,
+#app {
+	height: 100%;
+}
+.n-data-table .n-data-table-td.n-data-table-td--last-row{
+	border-bottom: 1px solid var(--n-merged-border-color);
+}

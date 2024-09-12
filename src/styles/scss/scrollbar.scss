@@ -1,0 +1,61 @@
+@mixin scrollbar($size: 8px, $color: #d9d9d9) {
+  scrollbar-width: thin;
+  scrollbar-color: $color transparent;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+    border-radius: $size;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: $color;
+    border-radius: $size;
+  }
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  &::-webkit-scrollbar-track-piece {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+  }
+}
+
+/* 滚动条整体部分 */
+::-webkit-scrollbar {
+  width: 6px;
+  //margin-right: 2px
+}
+
+/* 滚动条两端的按钮 */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 8px;
+}
+
+/* 外层轨道 */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* 滑块 */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.14);
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.amap-logo, .amap-copyright {
+  display: none !important;
+}
+.amap-sug-result {
+  z-index: 99999;
+}
