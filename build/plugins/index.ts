@@ -13,7 +13,9 @@ export function createVitePlugins(viteEnv:any, isBuild:any) {
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver({
+        importStyle: "sass",
+       })],
     }),
    ]
    if (isBuild) {
