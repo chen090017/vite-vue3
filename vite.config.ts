@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import path from 'path'
 import { createVitePlugins } from './build/plugins'
-const isBuild=true
+const isBuild=false
 // https://vitejs.dev/config/
 export default defineConfig({
    plugins: createVitePlugins(1,isBuild),

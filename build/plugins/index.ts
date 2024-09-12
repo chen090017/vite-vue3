@@ -1,12 +1,12 @@
 import vue from '@vitejs/plugin-vue'
- import UnoCSS from 'unocss/vite'
-import {visualizer} from 'rollup-plugin-visualizer'
+ import {visualizer} from 'rollup-plugin-visualizer'
+import { unocss } from './unocss'
 
  
 export function createVitePlugins(viteEnv:any, isBuild:any) {
    const plugins = [
     vue(),
-    UnoCSS({})
+    unocss()
    ]
    if (isBuild) {
     plugins.push(
