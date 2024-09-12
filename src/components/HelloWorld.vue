@@ -11,7 +11,7 @@ const count = ref(0)
 <template>
   <h1>{{ msg }} {{ app.name }}</h1>
 
-  <div class="card   ">
+  <div class="card w-2xl ">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
       Edit
