@@ -1,17 +1,78 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useAppStore } from '../store';
+import { login ,getUserInfo} from '@/api/auth'
+import { lStorage } from '@/utils/cache'
+import { setToken } from '@/utils/token'
 const app = useAppStore();
 
 defineProps<{ msg: string }>()
 
 const count = ref(0)
+
+const loginInfo = ref({
+  username: "admin",
+  password: "123456",
+  captcha: "12gl"
+})
+
+initLoginInfo()
+
+function initLoginInfo() {
+  const localLoginInfo = lStorage.get('loginInfo')
+  if (localLoginInfo) {
+    loginInfo.value.username = localLoginInfo.username || ''
+    loginInfo.value.password = localLoginInfo.password || ''
+  }
+}
+
+const isRemember = ref(false)
+async function handleLogin() {
+  const { username, password, captcha } = loginInfo.value
+  if (!username || !password) {
+    // $message.warning('请输入用户名和密码')
+    return
+  }
+  try {
+    const res = await login({ username, password: password.toString(), captcha })
+    if (res.code === 0) {
+      // $message.success('登录成功')
+      setToken(res.data.accessToken)
+      if (isRemember.value) {
+        lStorage.set('loginInfo', { username, password })
+      } else {
+        lStorage.remove('loginInfo')
+      }
+      // router.push('/')
+    } else {
+      // $message.warning(res.message)
+    }
+  } catch (error) {
+    // $message.error(error.message)
+  }
+}
+
+
+
+
+async function userInfo(){
+    await getUserInfo()
+} 
+
+
+
+
+
+
+
+
+
 </script>
 
 <template>
-<div class="mb-4">
-    <el-button>Default</el-button>
-    <el-button type="primary">Primary</el-button>
+  <div class="mb-4">
+    <el-button @click="handleLogin">登入</el-button>
+    <el-button  @click="userInfo"  type="primary">用户列表</el-button>
     <el-button type="success">Success</el-button>
     <el-button type="info">Info</el-button>
     <el-button type="warning">Warning</el-button>
