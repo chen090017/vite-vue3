@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useAppStore } from '../store';
+import { useAppStore } from '@/store';
 import { login ,getUserInfo} from '@/api/auth'
 import { lStorage } from '@/utils/cache'
 import { setToken } from '@/utils/token'
@@ -57,6 +57,11 @@ async function handleLogin() {
 
 async function userInfo(){
     await getUserInfo()
+
+    $message({
+    message: 'Congrats, this is a success message.',
+    type: 'success',
+  })
 } 
 
 
@@ -70,6 +75,14 @@ async function userInfo(){
 </script>
 
 <template>
+  <div>
+    <a href="https://vitejs.dev" target="_blank">
+      <img src="/vite.svg" class="logo" alt="Vite logo" />
+    </a>
+    <a href="https://vuejs.org/" target="_blank">
+      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+    </a>
+  </div>
   <div class="mb-4">
     <el-button @click="handleLogin">登入</el-button>
     <el-button  @click="userInfo"  type="primary">用户列表</el-button>
@@ -133,5 +146,17 @@ async function userInfo(){
 <style lang="scss" scoped>
 .read-the-docs {
   color: $primaryColor;
+}
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
