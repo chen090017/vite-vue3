@@ -15,10 +15,15 @@
     "jsx": "preserve",
 
     /* Linting */
-    "strict": true,
+    "strict": false,// ts js  混用
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./",  // ts js  混用
+    "paths": {
+      "@/*": ["./src/*"]  // ts js  混用
+    }
+    
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/api/auth/index.js", "src/utils/http/index.js", "src/utils/http/interceptors.js", "src/utils/is.js", "src/utils/cache/storage.js", "src/utils/cache/index.js", "src/api/user/index.js", "src/api/auth/index.js"]
 }

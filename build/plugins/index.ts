@@ -1,5 +1,5 @@
 import vue from '@vitejs/plugin-vue'
- import {visualizer} from 'rollup-plugin-visualizer'
+import { visualizer } from 'rollup-plugin-visualizer'
 import { unocss } from './unocss'
 
 import AutoImport from 'unplugin-auto-import/vite'
@@ -8,8 +8,8 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { configMockPlugin } from './mock'
 
 
-export function createVitePlugins(viteEnv:any, isBuild:any) {
-   const plugins = [
+export function createVitePlugins(viteEnv: any, isBuild: any) {
+  const plugins = [
     vue(),
     unocss(),
     AutoImport({
@@ -18,10 +18,10 @@ export function createVitePlugins(viteEnv:any, isBuild:any) {
     Components({
       resolvers: [ElementPlusResolver({
         importStyle: "sass",
-       })],
+      })],
     }),
-   ]
-   if (isBuild) {
+  ]
+  if (isBuild) {
     plugins.push(
       visualizer({
         open: true,
@@ -30,7 +30,7 @@ export function createVitePlugins(viteEnv:any, isBuild:any) {
       })
     )
   }
-  if (true) {
+  if (viteEnv?.VITE_APP_USE_MOCK === 'Y') {
     plugins.push(configMockPlugin())
   }
   return plugins
