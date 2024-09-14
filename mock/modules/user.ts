@@ -83,4 +83,28 @@ export default [
         }
     },
 },
+{
+  url: '/api/401',
+  method: 'post',
+  response: ({ query }) => {
+       return {
+          code: 401,
+          data: {
+              nickname: '@cname',
+              age: '@integer(10-100)',
+              uid: '@id',
+              url: '@image',
+              city: '@city',
+              country: '@county(true)',
+              province: '@province',
+              mobile_phone: '@phone',
+              email: '@email',
+              region: '@region',
+            
+          },
+      }
+  },
+},
+
+
 ]

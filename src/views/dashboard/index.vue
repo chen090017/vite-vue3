@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useAppStore } from '@/store';
-import { login ,getUserInfo} from '@/api/auth'
+import { login ,getUserInfo,status401} from '@/api/auth'
 import { lStorage } from '@/utils/cache'
 import { setToken } from '@/utils/token'
 const app = useAppStore();
+import { useI18n } from "vue-i18n";
+const {  t } = useI18n();
 
 defineProps<{ msg: string }>()
 
 const count = ref(0)
 
 const loginInfo = ref({
-  username: "admin",
+  username: "admin1",
   password: "123456",
   captcha: "12gl"
 })
+
+const currentPage4 = ref(4)
+ 
+const pageSize4 = ref(100)
 
 initLoginInfo()
 
@@ -58,29 +64,30 @@ async function handleLogin() {
 async function userInfo(){
     await getUserInfo()
 
-    $message({
-    message: 'Congrats, this is a success message.',
-    type: 'success',
-  })
+     
 } 
 
+async function status_401(){
+    await status401()
 
-
-
-
-
-
+     
+} 
+ 
+ 
 
 
 </script>
 
 <template>
   <div>
+    <lang-select class="nav-action-item" />
+    <div class="user-name">{{ $t('navbar.dashboard') }}</div>
+
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+      <img src="../../assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
   <div class="mb-4">
@@ -88,10 +95,22 @@ async function userInfo(){
     <el-button  @click="userInfo"  type="primary">用户列表</el-button>
     <el-button type="success">Success</el-button>
     <el-button type="info">Info</el-button>
-    <el-button type="warning">Warning</el-button>
+    <el-button type="warning" @click="status_401">401</el-button>
     <el-button type="danger">Danger</el-button>
   </div>
   <h1>{{ msg }} {{ app.name }}</h1>
+ 
+  <el-pagination
+      v-model:current-page="currentPage4"
+      v-model:page-size="pageSize4"
+      :page-sizes="[100, 200, 300, 400]"
+      :size="size"
+     
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="400"
+       
+    />
+
   <!-- 来自 Material Design 图标的橙色闹钟 -->
   <div class="i-mdi-alarm text-orange-400" />
   <div class="i-material-symbols:alarm-smart-wake w-1em h-1em"></div>

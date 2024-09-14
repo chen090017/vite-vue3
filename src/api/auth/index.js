@@ -23,3 +23,12 @@ export const getUserInfo = () => {
   })
 }
  
+
+export const status401 = () => {
+  return request({
+    url: '/401',
+    method: 'post',
+  })
+}
+
+ 

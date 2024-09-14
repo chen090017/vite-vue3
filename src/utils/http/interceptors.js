@@ -43,6 +43,7 @@ export function resResolve(response) {
 
 export function resReject(error) {
   let { code, message } = error.response?.data || {}
+  console.log(code,'111')
   if (isNullOrUndef(code)) {
     // 未知错误
     code = -1
