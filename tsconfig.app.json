@@ -25,5 +25,5 @@
     }
     
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/api/auth/index.js", "src/utils/http/index.js", "src/utils/http/interceptors.js", "src/utils/is.js", "src/utils/cache/storage.js", "src/utils/cache/index.js", "src/api/user/index.js", "src/api/auth/index.js"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/api/auth/index.js", "src/utils/http/index.js", "src/utils/http/interceptors.js", "src/utils/is.js", "src/utils/cache/storage.js", "src/utils/cache/index.js", "src/api/user/index.js", "src/api/auth/index.js","auto-imports.d.ts"]
 }
