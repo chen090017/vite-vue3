@@ -1,6 +1,12 @@
 import { defineConfig,loadEnv } from 'vite'
 import path from 'path'
 import { createVitePlugins } from './build/plugins'
+import { createProxy } from './build/utils'
+const proxyConfig = createProxy([  
+  ['/api', 'https://apifoxmock.com/m1/5145652-4809625-39bfe534/'],  
+  ['/files', 'http://files.example.com/'],  
+]);  
+  
  // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) =>{
   const viteEnv = loadEnv(mode, process.cwd()) ;
@@ -24,7 +30,8 @@ export default defineConfig(({ command, mode }) =>{
     server: {
       host: '0.0.0.0',  // 默认为'127.0.0.1'，如果将此设置为 `0.0.0.0` 或者 `true` 将监听所有地址，包括局域网和公网地址
       port: 3200,  // 端口
-     }
+      proxy:proxyConfig
+    }
    
   }
     
